@@ -8,7 +8,7 @@ if major_version == '2' && minor_version == '7'
   Coveralls.wear!
 end
 
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 
 require 'webmock/rspec'
 WebMock.disable_net_connect!(allow_localhost: true)

@@ -59,9 +59,10 @@ event = Minfraud::Components::Event.new(type: 'foobar') # => Minfraud::NotEnumVa
 # You can check the list of permitted values for the attribute by calling a class method
 Minfraud::Components::Event.type_values # => ["account_creation", "account_login", ....]
 
-# You can now call 3 different minFraud endpoints: score, insights, factors
+# You can now call 4 different minFraud endpoints: score, insights, factors, transactions/report
 assessment.insights
 assessment.factors
+assessment.report_transaction
 
 result = assessment.score # => Minfraud::Response instance
 
@@ -74,6 +75,20 @@ result.headers # => Response headers
 first_request = assessment.insights
 assessment.device.ip_address = '22.22.22.33'
 second_request = assessment.insights
+```
+
+### Report Transaction
+
+The report transaction endpoint only accepts a transaction component:
+
+```ruby
+txn = Minfraud::Components::Transaction.new({
+  ip_address: '1.2.3.4',
+  tag: 'suspected_fraud',
+  transaction_id: '1'
+})
+assessment = Minfraud::Assessments.new(transaction: transaction)
+result = assessment.report_transaction
 ```
 
 ### Exception handling
