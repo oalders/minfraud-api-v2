@@ -47,6 +47,10 @@ module Minfraud
     # @return [Minfraud::Components::ShoppingCart] ShoppingCart component
     attr_accessor :shopping_cart
 
+    # @!attribute transaction
+    # @return [Minfraud::Components::Transaction] Transaction component
+    attr_accessor :transaction
+
     # @param  [Hash] params hash of parameters
     # @param  [Minfraud::Resolver] resolver resolver that maps params to components
     # @note In case when params is a Hash of components it just assigns them to the corresponding instance variables
@@ -56,6 +60,24 @@ module Minfraud
       @locales = ['en'] if @locales.nil?
 
       resolver.assign(self, params)
+    end
+
+    # @method report_transaction
+    # Makes a request to the minFraud transactions/report endpoint
+    # Raises an error in case of invalid response
+    # @return [Minfraud::HTTPService::Response] wrapped minFraud response
+    def report_transaction # rubocop:disable Metrics/MethodLength
+      raw = request.perform({
+                              verb: :post,
+                              endpoint: 'transactions/report',
+                              body: request_body['transaction']
+                            })
+      response = ::Minfraud::HTTPService::Response.new(
+        status: raw.status.to_i,
+        body: raw.body,
+        headers: raw.headers
+      )
+      ::Minfraud::ErrorHandler.inspect(response)
     end
 
     # @!macro [attach] define

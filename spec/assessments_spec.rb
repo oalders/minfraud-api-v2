@@ -6,7 +6,7 @@ describe Minfraud::Assessments do
 
   before { allow(resolver).to receive(:assign) }
 
-  %w(account billing credit_card custom_inputs device email event order payment shipping shopping_cart).each do |attribute|
+  %w(account billing credit_card custom_inputs device email event order payment shipping shopping_cart transaction).each do |attribute|
     it "responds_to #{attribute}" do
       expect(subject).to respond_to(attribute)
     end
@@ -21,7 +21,7 @@ describe Minfraud::Assessments do
   end
 
 
-  describe '#score, #insights, #factors' do
+  describe '#score, #insights, #factors, #report_transaction' do
     let(:request)       { double(::Minfraud::HTTPService::Request) }
     let(:raw_response)  { double() }
     let(:error_handler) { ::Minfraud::ErrorHandler }
