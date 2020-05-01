@@ -1,11 +1,11 @@
 module Minfraud
   module ErrorHandler
     class << self
-      # Returns a response if status code is 200, raises an error otherwise
+      # Returns a response if status code is 2xx, raises an error otherwise
       # @param [Minfraud::HTTPService::Response] response
       # @return [Minfraud::HTTPService::Response] if status code is 200
       def examine(response)
-        return response if response.status == 200
+        return response if response.status > 199 && response.status < 300
 
         raise *STATUS_CODES.fetch(response.code, [ServerError, 'Server error'])
       end
