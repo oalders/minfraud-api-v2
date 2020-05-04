@@ -79,6 +79,7 @@ second_request = assessment.insights
 ### Exception handling
 
 The Gem supplies several distinct exception-types:
+
 ```ruby
 # Raised if unpermitted key is provided to Minfraud::Assessments initializer
 class RequestFormatError < BaseError; end
