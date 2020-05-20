@@ -11,7 +11,7 @@ module Minfraud
       #   should be passed as a string like "44.55.66.77" or "2001:db8::2:1".
       attr_accessor :ip_address
 
-      # @attribute tag
+      # @!attribute tag
       # @return [String] A string indicating the likelihood that a transaction
       #   may be fraudulent
       enum_accessor :type,
@@ -21,6 +21,11 @@ module Minfraud
                       spam_or_abuse
                       suspected_fraud
                     ]
+
+      # @attribute chargeback_code
+      # @return [String] A string which is provided by your payment processor
+      #   indicating the reason for the chargeback.
+      attr_accessor :chargeback_code
 
       # @attribute maxmind_id
       # @return [String] A unique eight character string identifying a minFraud
@@ -55,6 +60,7 @@ module Minfraud
       def initialize(params = {})
         @ip_address = params[:ip_address]
         @tag = params[:tag]
+        @chargeback_code = params[:chargeback_code]
         @maxmind_id = params[:maxmind_id]
         @minfraud_id = params[:minfraud_id]
         @notes = params[:notes]
