@@ -44,7 +44,7 @@ module Minfraud
       private
 
       def make_body(endpoint, body, locales)
-        if @status != 200
+        if @status != 200 && @status != 204
           # Won't be a Hash when the body is not JSON.
           return nil unless body.is_a?(Hash)
 
