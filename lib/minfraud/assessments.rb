@@ -73,6 +73,7 @@ module Minfraud
                               body: request_body['transaction']
                             })
       response = ::Minfraud::HTTPService::Response.new(
+        endpoint: 'transactions/report',
         status: raw.status.to_i,
         body: raw.body,
         headers: raw.headers
