@@ -14,13 +14,7 @@ module Minfraud
       # @!attribute tag
       # @return [String] A string indicating the likelihood that a transaction
       #   may be fraudulent
-      enum_accessor :tag,
-                    %i[
-                      chargeback
-                      not_fraud
-                      spam_or_abuse
-                      suspected_fraud
-                    ]
+      enum_accessor :tag, [:chargeback, :not_fraud, :spam_or_abuse, :suspected_fraud]
 
       # @attribute chargeback_code
       # @return [String] A string which is provided by your payment processor
@@ -66,6 +60,7 @@ module Minfraud
         @minfraud_id = params[:minfraud_id]
         @notes = params[:notes]
         @transaction_id = params[:transaction_id]
+        self.tag  = params[:tag]
       end
     end
   end
