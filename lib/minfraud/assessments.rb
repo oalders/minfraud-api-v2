@@ -48,8 +48,8 @@ module Minfraud
     attr_accessor :shopping_cart
 
     # @!attribute transaction
-    # @return [Minfraud::Components::Transaction] Transaction component
-    attr_accessor :transaction
+    # @return [Minfraud::Components::TransactionReport] TransactionReport component
+    attr_accessor :transaction_report
 
     # @param  [Hash] params hash of parameters
     # @param  [Minfraud::Resolver] resolver resolver that maps params to components
@@ -67,11 +67,10 @@ module Minfraud
     # Raises an error in case of invalid response
     # @return [Minfraud::HTTPService::Response] wrapped minFraud response
     def report_transaction
-      raw = request.perform(verb: :post, endpoint: 'transactions/report', body: request_body['transaction'])
+      raw = request.perform(verb: :post, endpoint: 'transactions/report', body: request_body['transaction_report'])
       return nil if raw.status.to_i == 204
 
       response = ::Minfraud::HTTPService::Response.new(
-        endpoint: 'report_transaction',
         status: raw.status.to_i,
         body: raw.body,
         headers: raw.headers

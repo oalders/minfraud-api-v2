@@ -82,12 +82,15 @@ second_request = assessment.insights
 The report transaction endpoint only accepts a transaction component:
 
 ```ruby
-txn = Minfraud::Components::Transaction.new(
-  ip_address: '1.2.3.4',
-  tag: 'suspected_fraud',
-  transaction_id: '1'
+report = Minfraud::Components::TransactionReport.new(
+  ip_address:     '1.2.3.4',
+  tag:            'suspected_fraud',
+  maxmind_id:     '12345678',
+  minfraud_id:    '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
+  notes:          'notes go here',
+  transaction_id: '1FA254yZ'
 )
-assessment = Minfraud::Assessments.new(transaction: transaction)
+assessment = Minfraud::Assessments.new(transaction_report: report)
 result = assessment.report_transaction
 ```
 

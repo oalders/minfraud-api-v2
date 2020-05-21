@@ -2,8 +2,8 @@
 
 module Minfraud
   module Components
-    # Contains all of the fields which are used in the report_transaction API
-    class Transaction < Base
+    # Contains all of the fields which are used in the report transaction API
+    class TransactionReport < Base
       include ::Minfraud::Enum
 
       # @!attribute ip_address
@@ -54,9 +54,10 @@ module Minfraud
       #   the transaction's maxmind_id or minfraud_id
       attr_accessor :transaction_id
 
-      # Creates Minfraud::Components::Transaction instance
+      # Creates Minfraud::Components::TransactionReport instance
       # @param  [Hash] params hash of parameters
-      # @return [Minfraud::Components::Transaction] a Transaction instance
+      # @return [Minfraud::Components::TransactionReport] a TransactionReport
+      #   instance
       def initialize(params = {})
         @ip_address = params[:ip_address]
         @tag = params[:tag]

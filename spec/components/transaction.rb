@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Minfraud::Components::Transaction do
+describe Minfraud::Components::TransactionReport do
   describe '#initialize' do
     context 'with an invalid type' do
       it 'raises an exception' do
