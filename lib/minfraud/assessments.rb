@@ -66,14 +66,12 @@ module Minfraud
     # Makes a request to the minFraud transactions/report endpoint
     # Raises an error in case of invalid response
     # @return [Minfraud::HTTPService::Response] wrapped minFraud response
-    def report_transaction # rubocop:disable Metrics/MethodLength
-      raw = request.perform({
-                              verb: :post,
-                              endpoint: 'transactions/report',
-                              body: request_body['transaction']
-                            })
+    def report_transaction
+      raw = request.perform(verb: :post, endpoint: 'transactions/report', body: request_body['transaction'])
+      return nil if raw.status.to_i == 204
+
       response = ::Minfraud::HTTPService::Response.new(
-        endpoint: 'transactions/report',
+        endpoint: 'report_transaction',
         status: raw.status.to_i,
         body: raw.body,
         headers: raw.headers

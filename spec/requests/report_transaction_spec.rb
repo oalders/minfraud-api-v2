@@ -22,8 +22,7 @@ describe Minfraud::Components::Transaction do
           body: request_body.strip
         )
         .to_return({ status: 204 })
-      expect(assessment.report_transaction.status).to eq(204)
-      expect(assessment.report_transaction.body).to be_empty
+      expect(assessment.report_transaction).to eq(nil)
     end
   end
 end
