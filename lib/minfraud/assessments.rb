@@ -75,7 +75,7 @@ module Minfraud
         body: raw.body,
         headers: raw.headers
       )
-      ::Minfraud::ErrorHandler.inspect(response)
+      ::Minfraud::ErrorHandler.examine(response)
     end
 
     # @!macro [attach] define
