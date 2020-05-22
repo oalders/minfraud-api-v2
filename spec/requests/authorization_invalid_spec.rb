@@ -21,7 +21,7 @@ describe Minfraud::Components::Device do
         .to_return(
           status: 401,
           body: response_body,
-          headers: { 'Content-Type': content_type }
+          headers: { 'Content-Type' => content_type }
         )
       expect { assessment.insights }
         .to raise_error(Minfraud::AuthorizationError)
