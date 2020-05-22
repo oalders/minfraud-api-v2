@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-response_body = <<~HEREDOC
+response_body = <<-HEREDOC
   {
      "code":"AUTHORIZATION_INVALID",
      "error":"An account ID and license key are required to use this service."
