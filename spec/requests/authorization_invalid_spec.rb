@@ -18,11 +18,11 @@ describe Minfraud::Components::Device do
   describe 'device with no credentials' do
     it 'makes a request' do
       stub_request(:post, 'https://minfraud.maxmind.com/minfraud/v2.0/insights')
-        .to_return({
-                     status: 401,
-                     body: response_body,
-                     headers: { 'Content-Type': content_type }
-                   })
+        .to_return(
+          status: 401,
+          body: response_body,
+          headers: { 'Content-Type': content_type }
+        )
       expect { assessment.insights }
         .to raise_error(Minfraud::AuthorizationError)
     end
