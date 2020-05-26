@@ -85,9 +85,20 @@ second_request = assessment.insights
 
 ### Report Transaction
 
-The report transaction endpoint only accepts a transaction component:
+MaxMind encourages the use of this API, as data received through this channel
+is continually used to improve the accuracy of their fraud detection algorithms.
+
+To use the Report Transactions API, create a new ` Minfraud::Components::TransactionReport`
+object. An IP address and a valid tag are required arguments for this API.
+Additional params may also be set, as documented below.
+
+If the report is successful, nothing is returned. If the report fails, an
+exception with be thrown.
+
+See the API documentation for more details.
 
 ```ruby
+# The report transaction endpoint only accepts a transaction component:
 report = Minfraud::Components::TransactionReport.new(
   ip_address:     '1.2.3.4',
   tag:            :suspected_fraud,

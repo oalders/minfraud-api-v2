@@ -9,11 +9,11 @@ BODY
 describe Minfraud::Components::TransactionReport do
   let(:report) do
     Minfraud::Components::TransactionReport.new(
-      ip_address:     '1.2.3.4',
-      tag:            'suspected_fraud',
-      maxmind_id:     '12345678',
-      minfraud_id:    '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
-      notes:          'notes go here',
+      ip_address: '1.2.3.4',
+      tag: :suspected_fraud,
+      maxmind_id: '12345678',
+      minfraud_id: '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
+      notes: 'notes go here',
       transaction_id: '1FA254yZ'
     )
   end
