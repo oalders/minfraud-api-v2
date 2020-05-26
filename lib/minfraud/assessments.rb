@@ -63,8 +63,8 @@ module Minfraud
     end
 
     # @method report_transaction
-    # Makes a request to the minFraud transactions/report endpoint
-    # Raises an error in case of invalid response
+    # Makes a request to the minFraud transactions/report endpoint.
+    # Raises an error in case of invalid response.
     # @return [Minfraud::HTTPService::Response] wrapped minFraud response
     def report_transaction
       raw = request.perform(verb: :post, endpoint: 'transactions/report', body: request_body['transaction_report'])
