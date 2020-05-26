@@ -12,7 +12,6 @@ module Minfraud
       attr_accessor :ip_address
 
       # @!attribute tag
-      # @param [Symbol] [:chargeback, :not_fraud, :spam_or_abuse, :suspected_fraud]
       # @return [Symbol, nil] A symbol indicating the likelihood that a transaction
       #   may be fraudulent
       enum_accessor :tag, [:chargeback, :not_fraud, :spam_or_abuse, :suspected_fraud]
