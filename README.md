@@ -4,9 +4,12 @@
 [![Coverage Status](https://coveralls.io/repos/github/kushniryb/minfraud-api-v2/badge.svg?branch=master)](https://coveralls.io/github/kushniryb/minfraud-api-v2?branch=master)
 [![Build Status](https://travis-ci.org/kushniryb/minfraud-api-v2.svg?branch=master)](https://travis-ci.org/kushniryb/minfraud-api-v2)
 
-Compatible with version minFraud API v2.0
+## Description
 
-[minFraud API documentation](http://dev.maxmind.com/minfraud/)
+This package provides an API for the [MaxMind minFraud Score, Insights, Factors
+and Report Transaction web services](https://dev.maxmind.com/minfraud/).
+
+Compatible with version minFraud API v2.0
 
 ## Installation
 
@@ -39,6 +42,9 @@ end
 ```
 
 ## Usage
+
+### Score, Insights and Factors
+
 ```ruby
 # You can either provide a hash of params to the initializer
 assessment = Minfraud::Assessments.new(
@@ -59,10 +65,10 @@ event = Minfraud::Components::Event.new(type: 'foobar') # => Minfraud::NotEnumVa
 # You can check the list of permitted values for the attribute by calling a class method
 Minfraud::Components::Event.type_values # => ["account_creation", "account_login", ....]
 
-# You can now call 4 different minFraud endpoints: score, insights, factors and report transaction
+# You can now call 3 different minFraud endpoints: score, insights and factors
+assessment.score
 assessment.insights
 assessment.factors
-assessment.report_transaction
 
 result = assessment.score # => Minfraud::Response instance
 

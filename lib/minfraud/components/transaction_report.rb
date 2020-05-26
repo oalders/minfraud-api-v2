@@ -7,12 +7,13 @@ module Minfraud
       include ::Minfraud::Enum
 
       # @!attribute ip_address
-      # @return [String] The IP address of the customer placing the order. This
+      # @return [String, nil] The IP address of the customer placing the order. This
       #   should be passed as a string like "44.55.66.77" or "2001:db8::2:1".
       attr_accessor :ip_address
 
       # @!attribute tag
-      # @return [String] A string indicating the likelihood that a transaction
+      # @param [Symbol] [:chargeback, :not_fraud, :spam_or_abuse, :suspected_fraud]
+      # @return [Symbol, nil] A symbol indicating the likelihood that a transaction
       #   may be fraudulent
       enum_accessor :tag, [:chargeback, :not_fraud, :spam_or_abuse, :suspected_fraud]
 
@@ -22,28 +23,28 @@ module Minfraud
       attr_accessor :chargeback_code
 
       # @attribute maxmind_id
-      # @return [String] A unique eight character string identifying a minFraud
+      # @return [String, nil] A unique eight character string identifying a minFraud
       #   Standard or Premium request. These IDs are returned in the maxmindID
       #   field of a response for a successful minFraud request. This field is
       #   not required, but you are encouraged to provide it, if possible.
       attr_accessor :maxmind_id
 
       # @attribute minfraud_id
-      # @return [String] A UUID that identifies a minFraud Score, minFraud
+      # @return [String, nil] A UUID that identifies a minFraud Score, minFraud
       #   Insights, or minFraud Factors request. This ID is returned at /id in
       #   the response. This field is not required, but you are encouraged to
       #   provide it if the request was made to one of these services.
       attr_accessor :minfraud_id
 
       # @attribute notes
-      # @return [String] Your notes on the fraud tag associated with the
+      # @return [String, nil] Your notes on the fraud tag associated with the
       #   transaction. We manually review many reported transactions to improve
       #   our scoring for you so any additional details to help us understand
       #   context are helpful.
       attr_accessor :notes
 
       # @attribute transaction_id
-      # @return [String] The transaction ID you originally passed to minFraud.
+      # @return [String, nil] The transaction ID you originally passed to minFraud.
       #   This field is not required, but you are encouraged to provide it or
       #   the transaction's maxmind_id or minfraud_id
       attr_accessor :transaction_id

@@ -47,7 +47,7 @@ module Minfraud
     # @return [Minfraud::Components::ShoppingCart] ShoppingCart component
     attr_accessor :shopping_cart
 
-    # @!attribute transaction
+    # @!attribute transaction_report
     # @return [Minfraud::Components::TransactionReport] TransactionReport component
     attr_accessor :transaction_report
 
@@ -65,7 +65,7 @@ module Minfraud
     # @method report_transaction
     # Makes a request to the minFraud transactions/report endpoint.
     # Raises an error in case of invalid response.
-    # @return [Minfraud::HTTPService::Response] wrapped minFraud response
+    # @return [Minfraud::HTTPService::Response, nil] wrapped minFraud response
     def report_transaction
       raw = request.perform(verb: :post, endpoint: 'transactions/report', body: request_body['transaction_report'])
       return nil if raw.status.to_i == 204
