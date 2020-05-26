@@ -98,7 +98,7 @@ exception with be thrown.
 See the API documentation for more details.
 
 ```ruby
-# The report transaction endpoint only accepts a transaction component:
+# The report_transaction method only makes use of a transaction_report component:
 report = Minfraud::Components::TransactionReport.new(
   ip_address:     '1.2.3.4',
   tag:            :suspected_fraud,
