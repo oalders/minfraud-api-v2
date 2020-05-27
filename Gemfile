@@ -10,5 +10,3 @@ if major_version == '2' && minor_version == '7'
 end
 
 gemspec
-
-gem "webmock", "~> 3.8"
