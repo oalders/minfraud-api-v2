@@ -24,6 +24,7 @@ require 'minfraud/http_service/request'
 require 'minfraud/http_service/response'
 require 'minfraud/error_handler'
 require 'minfraud/assessments'
+require 'minfraud/report_transaction'
 
 module Minfraud
   class << self

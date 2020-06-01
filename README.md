@@ -107,8 +107,8 @@ report = Minfraud::Components::TransactionReport.new(
   notes:          'notes go here',
   transaction_id: '1FA254yZ'
 )
-assessment = Minfraud::Assessments.new(transaction_report: report)
-assessment.report_transaction
+report = Minfraud::ReportTransaction.new(transaction_report: report)
+report.report_transaction
 ```
 
 ### Exception handling

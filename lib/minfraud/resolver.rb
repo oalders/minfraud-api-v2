@@ -28,7 +28,6 @@ module Minfraud
       payment:            ::Minfraud::Components::Payment,
       shipping:           ::Minfraud::Components::Shipping,
       shopping_cart:      ::Minfraud::Components::ShoppingCart,
-      transaction_report: ::Minfraud::Components::TransactionReport
     }
   end
 end
