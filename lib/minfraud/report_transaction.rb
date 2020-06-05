@@ -26,7 +26,7 @@ module Minfraud
       )
       ::Minfraud::ErrorHandler.examine(response)
 
-      return nil if raw.status.to_i == 204
+      return nil
     end
 
     private
