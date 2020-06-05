@@ -1,15 +1,15 @@
 module Minfraud
-  class ReportTransaction
+  class Report
     include ::Minfraud::HTTPService
 
-    # @!attribute transaction_report
-    # @return [Minfraud::Components::TransactionReport] TransactionReport component
-    attr_accessor :transaction_report
+    # @!attribute transaction
+    # @return [Minfraud::Components::Report::Transaction] Report::Transaction component
+    attr_accessor :transaction
 
     # @param  [Hash] params hash of parameters
     # @return [Minfraud::ReportTransaction] ReportTransaction instance
     def initialize(params = {})
-      @transaction_report = params[:transaction_report]
+      @transaction = params[:transaction]
     end
 
     # @method report_transaction
@@ -17,7 +17,7 @@ module Minfraud
     # Raises an error in case of invalid response.
     # @return [nil]
     def report_transaction
-      raw = request.perform(verb: :post, endpoint: 'transactions/report', body: request_body)
+      raw = request.perform(verb: :post, endpoint: 'transactions/report', body: @transaction.to_json)
 
       response = ::Minfraud::HTTPService::Response.new(
         status: raw.status.to_i,
@@ -27,13 +27,6 @@ module Minfraud
       ::Minfraud::ErrorHandler.examine(response)
 
       return nil
-    end
-
-    private
-    # Creates a unified request body from components converted to JSON
-    # @return [String] Request body
-    def request_body
-      @transaction_report.to_json
     end
 
     # Creates memoized Minfraud::HTTPService::Request instance

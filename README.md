@@ -88,7 +88,7 @@ second_request = assessment.insights
 MaxMind encourages the use of this API, as data received through this channel
 is continually used to improve the accuracy of their fraud detection algorithms.
 
-To use the Report Transactions API, create a new ` Minfraud::Components::TransactionReport`
+To use the Report Transactions API, create a new ` Minfraud::Components::Report::Transaction`
 object. An IP address and a valid tag are required arguments for this API.
 Additional params may also be set, as documented below.
 
@@ -98,8 +98,8 @@ exception with be thrown.
 See the API documentation for more details.
 
 ```ruby
-# The report_transaction method only makes use of a transaction_report component:
-report = Minfraud::Components::TransactionReport.new(
+# The report_transaction method only makes use of a transaction component:
+txn = Minfraud::Components::Report::Transaction.new(
   ip_address:     '1.2.3.4',
   tag:            :suspected_fraud,
   maxmind_id:     '12345678',
@@ -107,8 +107,8 @@ report = Minfraud::Components::TransactionReport.new(
   notes:          'notes go here',
   transaction_id: '1FA254yZ'
 )
-report = Minfraud::ReportTransaction.new(transaction_report: report)
-report.report_transaction
+reporter = Minfraud::Report.new(transaction: txn)
+reporter.report_transaction
 ```
 
 ### Exception handling
