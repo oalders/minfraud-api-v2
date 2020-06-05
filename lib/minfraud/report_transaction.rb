@@ -13,7 +13,7 @@ module Minfraud
     end
 
     # @method report_transaction
-    # Makes a request to the minFraud transactions/report endpoint.
+    # Makes a request to the minFraud report transactions API.
     # Raises an error in case of invalid response.
     # @return [nil]
     def report_transaction
