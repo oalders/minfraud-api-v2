@@ -1,5 +1,8 @@
 # Minfraud Changelog
 
+* Adds support for the new Factors outputs `/subscores/device`,
+  `/subscores/email_local_part` and `/subscores/shipping_address`
+
 ## v1.1.0 (2020-06-19)
 
 * Adds support for the minFraud Report Transaction API. Reporting
